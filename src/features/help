@@ -1,0 +1,421 @@
+// import React, { useState } from "react";
+
+// const GenerateScript = () => {
+//   const [scriptOutput, setScriptOutput] = useState(
+//     "Your generated script will appear here."
+//   );
+//   const [speechOutput, setSpeechOutput] = useState("");
+//   const [scriptInput, setScriptInput] = useState("");
+
+//   const handleGenerateScript = () => {
+//     // Placeholder function for generating a script (to be integrated with backend/AI model).
+//     setScriptOutput(
+//       "This is sentence one. This is sentence two. This is sentence three. This is sentence four."
+//     );
+//   };
+
+//   const handleTextToSpeech = () => {
+//     // Placeholder function for text-to-speech conversion (to be integrated with backend/AI model).
+//     setSpeechOutput("Speech synthesis in progress...");
+//   };
+
+//   const sentences = scriptOutput
+//     .split(".")
+//     .filter((sentence) => sentence.trim().length > 0);
+
+//   return (
+//     <div className="min-h-screen bg-gray-900 text-white">
+//       {/* Navbar Section */}
+//       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-lg z-50">
+//         <div className="container mx-auto flex justify-between items-center px-6 py-4">
+//           <div className="text-3xl font-bold text-yellow-400">CK</div>
+//           <div className="space-x-8 text-lg font-medium">
+//             <a
+//               href="/"
+//               className="hover:text-yellow-400 transition-all duration-300"
+//             >
+//               Home
+//             </a>
+//             <a
+//               href="/generate-script"
+//               className="hover:text-yellow-400 transition-all duration-300"
+//             >
+//               Generate Script
+//             </a>
+//             <a
+//               href="/features"
+//               className="hover:text-yellow-400 transition-all duration-300"
+//             >
+//               Features
+//             </a>
+//             <a
+//               href="/contact"
+//               className="hover:text-yellow-400 transition-all duration-300"
+//             >
+//               Contact
+//             </a>
+//           </div>
+//         </div>
+//       </nav>
+
+//       {/* Content Section */}
+//       <div className="pt-20 px-8 flex flex-col items-center justify-center">
+//         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+//           {/* Left Image */}
+//           <div className="w-full lg:w-1/2">
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/3131/3131621.png"
+//               alt="Script Writing"
+//               className="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//               style={{ width: "60%" }}
+//             />
+//           </div>
+
+//           {/* Right Content */}
+//           <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+//             <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp">
+//               Generate Your Script Instantly
+//             </h1>
+//             <p className="text-lg text-gray-400 mb-8 animate-fadeIn">
+//               Enter your topic below, and our AI will create a script for you in
+//               seconds.
+//             </p>
+//             <div className="w-full flex flex-col gap-4 animate-fadeIn delay-200">
+//               <input
+//                 type="text"
+//                 placeholder="Enter topic for your script"
+//                 className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//               />
+//               <button
+//                 onClick={handleGenerateScript}
+//                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition-transform duration-300"
+//               >
+//                 Generate Script
+//               </button>
+//             </div>
+//             <div className="w-full mt-6 p-4 bg-gray-800 rounded-lg shadow-lg animate-fadeIn">
+//               <h2 className="text-xl font-semibold mb-3 text-yellow-400">
+//                 Output
+//               </h2>
+//               <div className="w-full h-40 overflow-y-auto p-3 bg-gray-700 rounded-lg text-gray-300 whitespace-pre-line">
+//                 {scriptOutput || "Your script will appear here once generated."}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Divider Line */}
+//         <div className="w-full h-px bg-gray-700 my-12"></div>
+//         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+//           {/* Left Image */}
+//           <div className="w-full lg:w-1/2">
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/8984/8984813.png"
+//               alt="Text-to-Speech"
+//               className="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//               style={{ width: "80%" }}
+//             />
+//           </div>
+
+//           {/* Right Content */}
+//           <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+//             <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp">
+//               Convert Text to Speech
+//             </h1>
+//             <p className="text-lg text-gray-400 mb-8 animate-fadeIn">
+//               Paste your text below, and our AI will convert it into lifelike
+//               speech.
+//             </p>
+//             <div className="w-full flex flex-col gap-4 animate-fadeIn delay-200">
+//               <textarea
+//                 rows="4"
+//                 placeholder="Enter text to convert to speech"
+//                 className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//               ></textarea>
+//               <button
+//                 onClick={handleTextToSpeech}
+//                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition-transform duration-300"
+//               >
+//                 Convert to Speech
+//               </button>
+//             </div>
+//             <div className="w-full mt-6 p-4 bg-gray-800 rounded-lg shadow-lg animate-fadeIn">
+//               <h2 className="text-xl font-semibold mb-3 text-yellow-400">
+//                 Output
+//               </h2>
+//               <div className="w-full h-40 overflow-y-auto p-3 bg-gray-700 rounded-lg text-gray-300 whitespace-pre-line">
+//                 {speechOutput || "Speech output will appear here."}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Video Suggestions Section */}
+//         <div className="w-full h-px bg-gray-700 my-12"></div>
+//         <div className="container mx-auto">
+//           <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp text-center">
+//             Relevant Videos for Your Script
+//           </h1>
+//           <p className="text-lg text-gray-400 mb-8 animate-fadeIn text-center">
+//             Discover videos tailored to each sentence in your script.
+//           </p>
+//           <div className="w-full flex flex-col gap-4 mb-6">
+//             <input
+//               type="text"
+//               value={scriptInput}
+//               onChange={(e) => setScriptInput(e.target.value)}
+//               placeholder="Enter your script here"
+//               className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//             />
+//           </div>
+//           {sentences.map((sentence, index) => (
+//             <div key={index} className="mb-12">
+//               <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
+//                 Sentence {index + 1}: {sentence.trim()}
+//               </h2>
+//               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+//                 {[1, 2, 3, 4].map((videoIndex) => (
+//                   <div
+//                     key={videoIndex}
+//                     className="bg-gray-800 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//                   >
+//                     <img
+//                       src="https://via.placeholder.com/150"
+//                       alt={`Video suggestion ${videoIndex} for sentence ${
+//                         index + 1
+//                       }`}
+//                       className="w-full h-40 object-cover rounded-t-lg"
+//                     />
+//                     <div className="p-4 text-center">
+//                       <p className="text-sm text-gray-300">
+//                         Video {videoIndex} for this sentence.
+//                       </p>
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GenerateScript;
+
+
+
+// import React, { useState } from "react";
+
+// const GenerateScript = () => {
+//   const [scriptOutput, setScriptOutput] = useState(
+//     "Your generated script will appear here."
+//   );
+//   const [speechOutput, setSpeechOutput] = useState("");
+//   const [scriptInput, setScriptInput] = useState("");
+//   const [selectedVideos, setSelectedVideos] = useState({});
+
+//   const handleGenerateScript = () => {
+//     // Placeholder function for generating a script (to be integrated with backend/AI model).
+//     setScriptOutput(
+//       "This is sentence one. This is sentence two. This is sentence three. This is sentence four."
+//     );
+//   };
+
+//   const handleTextToSpeech = () => {
+//     // Placeholder function for text-to-speech conversion (to be integrated with backend/AI model).
+//     setSpeechOutput("Speech synthesis in progress...");
+//   };
+
+//   const handleVideoSelection = (sentenceIndex, videoIndex) => {
+//     setSelectedVideos((prevSelectedVideos) => ({
+//       ...prevSelectedVideos,
+//       [sentenceIndex]: videoIndex,
+//     }));
+//   };
+
+//   const handleMergeVideos = () => {
+//     // Placeholder for merging the selected videos logic.
+//     console.log("Selected videos for merge:", selectedVideos);
+//     alert("Videos have been selected for merging!");
+//   };
+
+//   const sentences = scriptOutput
+//     .split(".")
+//     .filter((sentence) => sentence.trim().length > 0);
+
+//   return (
+//     <div className="min-h-screen bg-gray-900 text-white">
+//       {/* Navbar Section */}
+//       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-lg z-50">
+//         <div className="container mx-auto flex justify-between items-center px-6 py-4">
+//           <div className="text-3xl font-bold text-yellow-400">CK</div>
+//           <div className="space-x-8 text-lg font-medium">
+//             <a href="/" className="hover:text-yellow-400 transition-all duration-300">
+//               Home
+//             </a>
+//             <a href="/generate-script" className="hover:text-yellow-400 transition-all duration-300">
+//               Generate Script
+//             </a>
+//             <a href="/features" className="hover:text-yellow-400 transition-all duration-300">
+//               Features
+//             </a>
+//             <a href="/contact" className="hover:text-yellow-400 transition-all duration-300">
+//               Contact
+//             </a>
+//           </div>
+//         </div>
+//       </nav>
+
+//       {/* Content Section */}
+//       <div className="pt-20 px-8 flex flex-col items-center justify-center">
+//         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+//           {/* Left Image */}
+//           <div className="w-full lg:w-1/2">
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/3131/3131621.png"
+//               alt="Script Writing"
+//               className="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//               style={{ width: "60%" }}
+//             />
+//           </div>
+
+//           {/* Right Content */}
+//           <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+//             <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp">
+//               Generate Your Script Instantly
+//             </h1>
+//             <p className="text-lg text-gray-400 mb-8 animate-fadeIn">
+//               Enter your topic below, and our AI will create a script for you in seconds.
+//             </p>
+//             <div className="w-full flex flex-col gap-4 animate-fadeIn delay-200">
+//               <input
+//                 type="text"
+//                 placeholder="Enter topic for your script"
+//                 className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//               />
+//               <button
+//                 onClick={handleGenerateScript}
+//                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition-transform duration-300"
+//               >
+//                 Generate Script
+//               </button>
+//             </div>
+//             <div className="w-full mt-6 p-4 bg-gray-800 rounded-lg shadow-lg animate-fadeIn">
+//               <h2 className="text-xl font-semibold mb-3 text-yellow-400">Output</h2>
+//               <div className="w-full h-40 overflow-y-auto p-3 bg-gray-700 rounded-lg text-gray-300 whitespace-pre-line">
+//                 {scriptOutput || "Your script will appear here once generated."}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Divider Line */}
+//         <div className="w-full h-px bg-gray-700 my-12"></div>
+//         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+//           {/* Left Image */}
+//           <div className="w-full lg:w-1/2">
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/8984/8984813.png"
+//               alt="Text-to-Speech"
+//               className="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//               style={{ width: "80%" }}
+//             />
+//           </div>
+
+//           {/* Right Content */}
+//           <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+//             <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp">
+//               Convert Text to Speech
+//             </h1>
+//             <p className="text-lg text-gray-400 mb-8 animate-fadeIn">
+//               Paste your text below, and our AI will convert it into lifelike speech.
+//             </p>
+//             <div className="w-full flex flex-col gap-4 animate-fadeIn delay-200">
+//               <textarea
+//                 rows="4"
+//                 placeholder="Enter text to convert to speech"
+//                 className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//               ></textarea>
+//               <button
+//                 onClick={handleTextToSpeech}
+//                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition-transform duration-300"
+//               >
+//                 Convert to Speech
+//               </button>
+//             </div>
+//             <div className="w-full mt-6 p-4 bg-gray-800 rounded-lg shadow-lg animate-fadeIn">
+//               <h2 className="text-xl font-semibold mb-3 text-yellow-400">Output</h2>
+//               <div className="w-full h-40 overflow-y-auto p-3 bg-gray-700 rounded-lg text-gray-300 whitespace-pre-line">
+//                 {speechOutput || "Speech output will appear here."}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Video Suggestions Section */}
+//         <div className="w-full h-px bg-gray-700 my-12"></div>
+//         <div className="container mx-auto">
+//           <h1 className="text-4xl lg:text-5xl font-bold mb-6 animate-slideInUp text-center">
+//             Relevant Videos for Your Script
+//           </h1>
+//           <p className="text-lg text-gray-400 mb-8 animate-fadeIn text-center">
+//             Discover videos tailored to each sentence in your script.
+//           </p>
+//           <div className="w-full flex flex-col gap-4 mb-6">
+//             <input
+//               type="text"
+//               value={scriptInput}
+//               onChange={(e) => setScriptInput(e.target.value)}
+//               placeholder="Enter your script here"
+//               className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+//             />
+//           </div>
+//           {sentences.map((sentence, index) => (
+//             <div key={index} className="mb-12">
+//               <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
+//                 Sentence {index + 1}: {sentence.trim()}
+//               </h2>
+//               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+//                 {[1, 2, 3, 4].map((videoIndex) => (
+//                   <div
+//                     key={videoIndex}
+//                     className="bg-gray-800 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
+//                   >
+//                     <img
+//                       src="https://via.placeholder.com/150"
+//                       alt={`Video suggestion ${videoIndex} for sentence ${
+//                         index + 1
+//                       }`}
+//                       className="w-full h-40 object-cover rounded-t-lg"
+//                     />
+//                     <div className="p-4 text-center">
+//                       <p className="text-sm text-gray-300">
+//                         Video {videoIndex} for this sentence.
+//                       </p>
+//                       <input
+//                         type="checkbox"
+//                         onChange={() => handleVideoSelection(index, videoIndex)}
+//                         checked={selectedVideos[index] === videoIndex}
+//                         className="mt-2"
+//                       />
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           ))}
+//           <button
+//             onClick={handleMergeVideos}
+//             className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition-transform duration-300"
+//           >
+//             Integrate Selected Videos
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GenerateScript;
