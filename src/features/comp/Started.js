@@ -32,7 +32,7 @@ const GenerateScript = () => {
   const handleFindVideos = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/search?query=${vidText}`
+        `/api/search?query=${vidText}`
       );
       setVidData(response.data.videos);
     } catch (error) {
@@ -75,7 +75,7 @@ const GenerateScript = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/generate-audio",
+        "/generate-audio",
         {
           text: textToSpeechInput,
         },
@@ -154,7 +154,7 @@ const GenerateScript = () => {
     });
 
     try {
-      const response = await fetch("http://localhost:5000/merge", {
+      const response = await fetch("/merge", {
         method: "POST",
         body: formData,
       });
@@ -212,7 +212,7 @@ const GenerateScript = () => {
   const handleAudioUpload = (e) => {
     setSelectedAudio(e.target.files[0]);
   };
-
+  // http://localhost:5000
   // const [mergedVideoUrl, setMergedVideoUrl] = useState(null);
 
   const handleAudioMerge = async () => {
@@ -223,7 +223,7 @@ const GenerateScript = () => {
     formData.append("videoUrl", mergedVideoUrl);
 
     try {
-      const response = await fetch("http://localhost:5000/add-audio", {
+      const response = await fetch("/add-audio", {
         method: "POST",
         body: formData,
       });
