@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import Home from './features/home/Home';
 import Started from './features/comp/Started';
 import Merge from './features/comp/Merge';
+import Update from './features/comp/Updates';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +30,13 @@ const router = createBrowserRouter([
     path: '/get-started',
     element: (
       <Started/>
+    
+    ),
+  },
+  {
+    path: '/updates',
+    element: (
+      <Update/>
     
     ),
   }
